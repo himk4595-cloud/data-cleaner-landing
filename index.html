@@ -14,7 +14,6 @@
     button.secondary { background:#fff; color:#111; }
     .card { border:1px solid #e6e6e6; border-radius:14px; padding:16px; margin-top: 18px; }
     ul { padding-left: 18px; }
-    input { padding: 12px; font-size: 16px; width: min(420px, 100%); border-radius: 10px; border:1px solid #ccc; }
     .muted { color:#666; font-size: 14px; }
     .hidden { display:none; }
   </style>
@@ -58,34 +57,27 @@
     <button onclick="openModal()">Reserve early access</button>
   </div>
 
-  <!-- “Fake buy” modal -->
-  <div id="modal" class="card hidden">
-    <h2>Launching soon 🚀</h2>
-    <p>Enter your email and I’ll notify you when it’s ready (plus an early-access discount).</p>
+<div id="modal" class="card hidden">
+  <h2>Launching soon 🚀</h2>
+  <p>Click below to get early access and tell me the most annoying Excel data problem you deal with.</p>
 
-    <!-- Replace action="#" later with a real form link (Google Forms / Mailchimp etc.) -->
-    <form onsubmit="event.preventDefault(); thankYou();">
-      <input id="email" type="email" required placeholder="you@email.com" />
-      <div class="row">
-        <button onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLScPI0I0J-vlp4tlpla4Cu2wmOOs63VdPjEEfVNhmVLun9Trng/viewform?usp=dialog','_blank')">Notify Me</button>
-        <button type="button" class="secondary" onclick="closeModal()">Cancel</button>
-      </div>
-    </form>
-    <p id="thanks" class="muted hidden">✅ Got it — you’re on the list!</p>
+  <div class="row">
+    <button type="button"
+      onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLScPI0I0J-vlp4tlpla4Cu2wmOOs63VdPjEEfVNhmVLun9Trng/viewform?usp=dialog','_blank')">
+      Notify Me
+    </button>
+    <button type="button" class="secondary" onclick="closeModal()">Cancel</button>
   </div>
+</div>
 
+  
   <script>
     function openModal() {
       document.getElementById('modal').classList.remove('hidden');
       document.getElementById('modal').scrollIntoView({behavior:'smooth'});
-      setTimeout(() => document.getElementById('email').focus(), 200);
     }
     function closeModal() {
       document.getElementById('modal').classList.add('hidden');
-    }
-    function thankYou() {
-      document.getElementById('thanks').classList.remove('hidden');
-      document.getElementById('email').value = '';
     }
   </script>
 </body>
