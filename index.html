@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>One-Click Excel Data Cleaner</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 860px; margin: 48px auto; padding: 0 16px; line-height: 1.5; }
+    .pill { display:inline-block; padding:6px 10px; border:1px solid #ddd; border-radius:999px; font-size:14px; }
+    h1 { font-size: 40px; margin: 14px 0 10px; }
+    .sub { font-size: 18px; color: #333; max-width: 60ch; }
+    .row { display:flex; gap:12px; flex-wrap:wrap; margin: 18px 0 10px; }
+    button { padding: 12px 16px; font-size: 16px; border-radius: 10px; border: 1px solid #111; background:#111; color:#fff; cursor:pointer; }
+    button.secondary { background:#fff; color:#111; }
+    .card { border:1px solid #e6e6e6; border-radius:14px; padding:16px; margin-top: 18px; }
+    ul { padding-left: 18px; }
+    input { padding: 12px; font-size: 16px; width: min(420px, 100%); border-radius: 10px; border:1px solid #ccc; }
+    .muted { color:#666; font-size: 14px; }
+    .hidden { display:none; }
+  </style>
+</head>
+<body>
+  <span class="pill">Excel Add-in • Launching soon</span>
+  <h1>Clean messy Excel data in one click</h1>
+  <p class="sub">
+    Fix numbers stored as text, extra spaces, inconsistent capitalization, and mixed formats — without formulas.
+  </p>
+
+  <div class="row">
+    <button onclick="openModal()">Get Early Access</button>
+    <button class="secondary" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">See what it fixes</button>
+  </div>
+
+  <div class="card" id="features">
+    <h2>What it fixes</h2>
+    <ul>
+      <li>Numbers stored as text</li>
+      <li>Extra spaces (leading/trailing/double spaces)</li>
+      <li>Inconsistent capitalization (john DOE → John Doe)</li>
+      <li>Mixed date formats</li>
+      <li>Cleaning imported CSV / CRM exports</li>
+    </ul>
+    <p class="muted">Goal: turn “messy spreadsheet” into “ready to analyze” in seconds.</p>
+  </div>
+
+  <div class="card">
+    <h2>How it works</h2>
+    <ol>
+      <li>Select your range (or the whole sheet)</li>
+      <li>Click <strong>Clean & Standardize</strong></li>
+      <li>Review the changes (undo anytime)</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2>Pricing (early access)</h2>
+    <p><strong>$19 one-time</strong> for early users (price will increase after launch).</p>
+    <button onclick="openModal()">Reserve early access</button>
+  </div>
+
+  <!-- “Fake buy” modal -->
+  <div id="modal" class="card hidden">
+    <h2>Launching soon 🚀</h2>
+    <p>Enter your email and I’ll notify you when it’s ready (plus an early-access discount).</p>
+
+    <!-- Replace action="#" later with a real form link (Google Forms / Mailchimp etc.) -->
+    <form onsubmit="event.preventDefault(); thankYou();">
+      <input id="email" type="email" required placeholder="you@email.com" />
+      <div class="row">
+        <button type="submit">Notify me</button>
+        <button type="button" class="secondary" onclick="closeModal()">Cancel</button>
+      </div>
+    </form>
+    <p id="thanks" class="muted hidden">✅ Got it — you’re on the list!</p>
+  </div>
+
+  <script>
+    function openModal() {
+      document.getElementById('modal').classList.remove('hidden');
+      document.getElementById('modal').scrollIntoView({behavior:'smooth'});
+      setTimeout(() => document.getElementById('email').focus(), 200);
+    }
+    function closeModal() {
+      document.getElementById('modal').classList.add('hidden');
+    }
+    function thankYou() {
+      document.getElementById('thanks').classList.remove('hidden');
+      document.getElementById('email').value = '';
+    }
+  </script>
+</body>
+</html>
